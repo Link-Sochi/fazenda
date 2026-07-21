@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fazenda — аренда площадки с бассейном в Сочи</title>
+<meta name="description" content="Fazenda — аренда всей площадки с бассейном, мангалом и летней кухней для вашей компании до 20 человек. Сочи, СНТ Радуга.">
+
+<!--
+==================================================================
+  КАК РЕДАКТИРОВАТЬ  (в любом текстовом редакторе)
+==================================================================
+  1. ТЕКСТ    — ищите пометки  [ЗАМЕНИТЕ ...]  и вписывайте своё.
+  2. ТЕЛЕФОН / WHATSAPP / TELEGRAM — строки  tel:  wa.me  t.me
+     (в шапке, в блоке брони, в подвале). Instagram @fazen.da_ уже стоит.
+  3. WHATSAPP для формы — внизу в <script> переменная WHATSAPP_NUMBER.
+  4. ФОТО     — серые блоки. Меняйте <div class="ph ...">...</div>
+     на  <img class="media" src="ФАЙЛ.jpg" alt="описание">.
+  5. ЦЕНЫ     — в секции «Тарифы» уже проставлен майский прайс.
+  6. КАРТА    — в секции «Как добраться» вставьте <iframe> Яндекс.Карт/2ГИС.
+==================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --deep:#2e388c;        /* индиго (основной, тёмный анкор) */
+    --deep-2:#3b46a5;
+    --sand:#e9ebf1;        /* прохладный светло-серый (фон) */
+    --paper:#ffffff;       /* белые карточки */
+    --sun:#e07d34;         /* тёплый оранжевый (акцент, кнопки) */
+    --sun-deep:#c66a24;
+    --sun-lt:#f2a862;      /* светлый оранжевый — на тёмном фоне */
+    --aqua:#4a56a6;        /* средний индиго — иконки, детали */
+    --ink:#212a55;         /* тёмно-синий текст */
+    --muted:#6a7089;
+    --line:rgba(46,56,140,.16);
+    --line-soft:rgba(46,56,140,.08);
+    --dash:rgba(46,56,140,.3);
+    --shadow:0 22px 60px -28px rgba(33,42,85,.5);
+    --arch:190px 190px 14px 14px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Manrope",system-ui,sans-serif;background:var(--sand);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  h1,h2,h3,.display{font-family:"Cormorant",Georgia,serif;font-weight:600;line-height:1.04;letter-spacing:-.01em}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px;position:relative;z-index:2}
+
+  .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sun-deep);display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--sun)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:100px;font-weight:700;font-size:.94rem;cursor:pointer;border:1px solid transparent;transition:.25s ease;white-space:nowrap}
+  .btn--gold{background:var(--sun);color:#fff;box-shadow:0 14px 30px -14px rgba(224,125,52,.85)}
+  .btn--gold:hover{background:var(--sun-deep);transform:translateY(-2px)}
+  .btn--ghost{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+  .btn--ghost:hover{background:rgba(255,255,255,.12)}
+  .btn--dark{background:var(--deep);color:#fff}
+  .btn--dark:hover{background:var(--deep-2);transform:translateY(-2px)}
+
+  /* заглушки под фото */
+  .ph{position:relative;background:
+      radial-gradient(120% 120% at 30% 20%, rgba(74,86,166,.18), transparent 60%),
+      linear-gradient(160deg,#dfe2ec,#cdd2e2);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--deep);text-align:center;padding:22px;overflow:hidden}
+  .ph::after{content:"";position:absolute;inset:10px;border:1px dashed var(--dash);border-radius:inherit;pointer-events:none}
+  .ph svg{width:30px;height:30px;opacity:.6}
+  .ph span{font-size:.82rem;font-weight:600;letter-spacing:.02em;max-width:80%;opacity:.85}
+  .arch{border-radius:var(--arch)}
+  .media{width:100%;height:100%;object-fit:cover}
+
+  /* логотип-марка (горы + солнце) */
+  .logo{display:inline-flex;align-items:center;gap:11px;color:#fff;transition:color .3s}
+  .logo .mark{width:34px;height:26px;flex:none}
+  .logo .mark .mtn{fill:currentColor}
+  .logo .mark .sun{fill:var(--sun)}
+  .logo .txt{font-family:"Cormorant",serif;font-size:1.7rem;font-weight:700;letter-spacing:.16em;line-height:1}
+  .logo .txt small{font-family:"Manrope";font-size:.54rem;letter-spacing:.32em;font-weight:600;display:block;margin-top:2px;opacity:.8}
+
+  /* шапка */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s ease;padding:18px 0}
+  header.scrolled{background:rgba(233,235,241,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line-soft);padding:12px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  header.scrolled .logo{color:var(--deep)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.9);transition:.2s}
+  header.scrolled .nav-links a{color:var(--ink)}
+  .nav-links a:hover{color:var(--sun)}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  .nav-phone{font-weight:700;color:#fff;font-size:.95rem;transition:color .3s}
+  header.scrolled .nav-phone{color:var(--deep)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .burger span{width:24px;height:2px;background:#fff;transition:.3s}
+  header.scrolled .burger span{background:var(--deep)}
+
+  /* герой */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+  .hero .ph{position:absolute;inset:0;border-radius:0;background:
+      linear-gradient(180deg, rgba(20,26,66,.24), rgba(20,26,66,.74)),
+      radial-gradient(120% 90% at 70% 10%, rgba(74,86,166,.55), transparent 55%),
+      linear-gradient(160deg,#3b46a5,#232a5f)}
+  .hero .ph::after{inset:24px;border-color:rgba(255,255,255,.18)}
+  .hero .ph span{color:rgba(255,255,255,.7)}
+  .hero .ph svg{opacity:.4}
+  .hero-inner{position:relative;z-index:2;padding:120px 0 54px;width:100%}
+  .hero h1{font-size:clamp(2.9rem,7.3vw,6rem);max-width:15ch;margin:.35em 0 .45em;font-weight:600}
+  .hero h1 em{font-style:italic;color:var(--sun-lt)}
+  .hero p.lead{font-size:1.12rem;max-width:46ch;color:rgba(255,255,255,.88);margin-bottom:32px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-facts{display:flex;gap:14px;flex-wrap:wrap;margin-top:52px}
+  .fact-chip{display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);font-weight:600;font-size:.92rem}
+  .fact-chip svg{width:19px;height:19px;color:var(--sun-lt);flex:none}
+  .scroll-hint{position:absolute;bottom:22px;right:26px;z-index:2;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
+  .scroll-hint::after{content:"";width:1px;height:40px;background:rgba(255,255,255,.5)}
+
+  /* цифры */
+  .stats{background:var(--deep);color:#fff;padding:56px 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stat .num{font-family:"Cormorant",serif;font-size:clamp(2.4rem,4.6vw,3.4rem);font-weight:600;color:var(--sun-lt);line-height:1}
+  .stat .lbl{font-size:.86rem;color:rgba(255,255,255,.75);margin-top:8px;letter-spacing:.02em}
+  .stats-grid .stat+.stat{border-left:1px solid rgba(255,255,255,.16)}
+
+  section{position:relative}
+  .pad{padding:clamp(72px,10vw,120px) 0}
+  .sec-head{max-width:660px;margin-bottom:52px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(2.2rem,4.6vw,3.5rem);margin:.28em 0 .3em}
+  .sec-head p{color:var(--muted);font-size:1.06rem}
+
+  /* инфраструктура — карточки с пунктирной обводкой (как на референсе) */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{background:var(--paper);border:1.5px dashed var(--dash);border-radius:16px;padding:28px 26px;transition:.28s ease}
+  .feat:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent;border-style:solid}
+  .feat .ic{width:50px;height:50px;border-radius:12px;background:rgba(74,86,166,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .feat .ic svg{width:25px;height:25px;color:var(--aqua);stroke-width:1.6}
+  .feat h3{font-family:"Manrope";font-size:1.08rem;font-weight:700;margin-bottom:6px}
+  .feat p{font-size:.93rem;color:var(--muted)}
+
+  /* тарифы */
+  .rooms{background:var(--paper)}
+  .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .room{background:var(--sand);border:1px solid var(--line-soft);border-radius:22px;overflow:hidden;transition:.3s ease;display:flex;flex-direction:column;position:relative}
+  .room:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .room.featured{border-color:var(--sun)}
+  .room.featured::before{content:"Выгодно";position:absolute;top:16px;right:16px;z-index:3;background:var(--sun);color:#fff;font-size:.72rem;font-weight:700;padding:6px 13px;border-radius:100px;letter-spacing:.05em}
+  .room-media{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .room-media .ph{position:absolute;inset:0;border-radius:0}
+  .room-media .badge{position:absolute;top:14px;left:14px;z-index:2;background:rgba(46,56,140,.9);color:#fff;font-size:.78rem;font-weight:700;padding:7px 14px;border-radius:100px;letter-spacing:.03em}
+  .room-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
+  .room-body h3{font-size:1.7rem;margin-bottom:4px}
+  .room-cap{font-size:.9rem;color:var(--muted);margin-bottom:16px}
+  .room-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+  .room-list li{font-size:.9rem;display:flex;align-items:center;gap:10px;color:#3a4166}
+  .room-list li svg{width:16px;height:16px;color:var(--aqua);flex:none}
+  .room-foot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+  .price small{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .price b{font-family:"Cormorant",serif;font-size:2rem;font-weight:700;color:var(--deep)}
+  .price-note{text-align:center;margin-top:30px;font-size:.9rem;color:var(--muted)}
+
+  /* галерея */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;grid-auto-rows:220px}
+  .gallery .cell{border-radius:16px;overflow:hidden}
+  .gallery .cell .ph{width:100%;height:100%;border-radius:0}
+  .gallery .tall{grid-row:span 2}
+  .gallery .arch-cell{border-radius:var(--arch)}
+  .gallery .arch-cell .ph{border-radius:inherit}
+
+  /* как добраться */
+  .route{background:var(--deep);color:#fff}
+  .route-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:center}
+  .route h2{color:#fff}
+  .route .sec-head p{color:rgba(255,255,255,.72)}
+  .route-info{display:flex;flex-direction:column;gap:22px;margin-top:30px}
+  .route-item{display:flex;gap:16px}
+  .route-item .ic{width:44px;height:44px;flex:none;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+  .route-item .ic svg{width:22px;height:22px;color:var(--sun-lt)}
+  .route-item h4{font-family:"Manrope";font-size:1rem;font-weight:700;margin-bottom:2px}
+  .route-item p{font-size:.92rem;color:rgba(255,255,255,.72)}
+  .map-box{aspect-ratio:1/1;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.16)}
+  .map-box .ph{width:100%;height:100%;border-radius:0;background:linear-gradient(160deg,#3b46a5,#232a5f)}
+  .map-box .ph span,.map-box .ph svg{color:rgba(255,255,255,.6)}
+  .map-box iframe{width:100%;height:100%;border:0;display:block}
+
+  /* отзывы */
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .rev{background:var(--paper);border:1px solid var(--line-soft);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;gap:16px}
+  .stars{color:var(--sun);font-size:1rem;letter-spacing:2px}
+  .rev p{color:#2c3357;font-family:"Cormorant",serif;font-size:1.28rem;line-height:1.4;font-style:italic}
+  .rev .who{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .rev .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--aqua),var(--deep));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .rev .who b{display:block;font-size:.92rem}
+  .rev .who small{color:var(--muted);font-size:.8rem}
+
+  /* бронирование */
+  .book{background:linear-gradient(160deg, rgba(46,56,140,.96), rgba(46,56,140,.96)),radial-gradient(80% 120% at 90% 0%, rgba(74,86,166,.55), transparent 60%);color:#fff}
+  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .book h2{color:#fff}
+  .book .sec-head p{color:rgba(255,255,255,.75)}
+  .book-contacts{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+  .book-contacts a{display:flex;align-items:center;gap:14px;font-weight:600;font-size:1.05rem}
+  .book-contacts a .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:.25s}
+  .book-contacts a:hover .ic{background:var(--sun)}
+  .book-contacts a .ic svg{width:20px;height:20px;color:var(--sun-lt);transition:.25s}
+  .book-contacts a:hover .ic svg{color:#fff}
+  .form{background:var(--paper);border-radius:24px;padding:34px;color:var(--ink)}
+  .form h3{font-size:1.7rem;margin-bottom:6px}
+  .form>p{color:var(--muted);font-size:.92rem;margin-bottom:22px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.8rem;font-weight:600;margin-bottom:6px;color:#39416a}
+  .field input,.field select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:.95rem;background:#fff;transition:.2s;color:var(--ink)}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--sun);box-shadow:0 0 0 3px rgba(224,125,52,.16)}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form .btn{width:100%;margin-top:8px}
+  .form .note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:12px}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:64px 0 32px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+  .foot .logo{color:#fff;margin-bottom:16px}
+  .foot-col h5{color:#fff;font-family:"Manrope";font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+  .foot-col a{display:block;margin-bottom:10px;font-size:.92rem;transition:.2s}
+  .foot-col a:hover{color:var(--sun-lt)}
+  .foot-about{font-size:.92rem;max-width:34ch}
+  .foot-social{display:flex;gap:12px;margin-top:18px}
+  .foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;transition:.25s}
+  .foot-social a:hover{background:var(--sun);border-color:var(--sun)}
+  .foot-social svg{width:18px;height:18px;color:#fff}
+  .foot-bot{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:960px){
+    .feat-grid{grid-template-columns:repeat(2,1fr)}
+    .room-grid,.rev-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+    .route-grid,.book-grid{grid-template-columns:1fr;gap:40px}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px 20px}
+    .stats-grid .stat+.stat{border-left:0}
+    .nav-links,.nav-phone{display:none}
+    .burger{display:flex}
+    .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--sand);padding:20px 26px;gap:18px;box-shadow:var(--shadow)}
+    .nav-links.open a{color:var(--ink)}
+  }
+  @media(max-width:560px){
+    .feat-grid{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
+    .gallery .tall{grid-row:span 1}
+    .form .row{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bot{flex-direction:column}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <svg class="mark" viewBox="0 0 40 28" aria-hidden="true"><circle class="sun" cx="27.5" cy="7.5" r="4.2"/><path class="mtn" d="M1 27 L12 8 L18 17 L23.5 9 L39 27 Z"/></svg>
+      <span class="txt">FAZENDA<small>СОЧИ · АРЕНДА ПЛОЩАДКИ</small></span>
+    </a>
+    <nav class="nav-links" id="menu">
+      <a href="#uslugi">Что есть</a>
+      <a href="#tarify">Тарифы</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#route">Как добраться</a>
+      <a href="#book">Контакты</a>
+    </nav>
+    <div class="nav-cta">
+      <!-- [ЗАМЕНИТЕ телефон] -->
+      <a href="tel:+70000000000" class="nav-phone">+7 (000) 000-00-00</a>
+      <a href="#book" class="btn btn--gold">Забронировать</a>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ГЕРОЙ -->
+<section class="hero" id="top">
+  <!-- ФОТО ГЕРОЯ: замените на <img class="media" src="hero.jpg" alt="Бассейн Fazenda"> (широкое фото бассейна/площадки в солнечный день) -->
+  <div class="ph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/><path d="M7 12V5a2 2 0 0 1 4 0M13 12V6"/></svg>
+    <span>Фото бассейна и площадки — широкое, солнечное</span>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow" style="color:var(--sun-lt)">База отдыха · Сочи</span>
+    <h1>Вся площадка с бассейном — <em>только вашей</em> компании</h1>
+    <p class="lead">Бассейн, мангал и летняя кухня на целый день. Собирайте компанию до 20 человек и отдыхайте с 11:00 до 21:00 — без соседей и посторонних.</p>
+    <div class="hero-actions">
+      <a href="#tarify" class="btn btn--gold">Смотреть тарифы</a>
+      <a href="#book" class="btn btn--ghost">Забронировать дату</a>
+    </div>
+    <div class="hero-facts">
+      <div class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/></svg>Бассейн</div>
+      <div class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16M6 10l1-5h10l1 5M7 10v9M17 10v9"/></svg>Мангал</div>
+      <div class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 12h16M9 8V5h6v3"/></svg>Летняя кухня</div>
+    </div>
+  </div>
+  <div class="scroll-hint">Листайте вниз</div>
+</section>
+
+<!-- ЦИФРЫ -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><div class="num">до&nbsp;20</div><div class="lbl">гостей одной компанией</div></div>
+    <div class="stat reveal"><div class="num">10&nbsp;ч</div><div class="lbl">отдыха — с 11:00 до 21:00</div></div>
+    <div class="stat reveal"><div class="num">от 10&nbsp;000&nbsp;₽</div><div class="lbl">за всю площадку на день</div></div>
+    <div class="stat reveal"><div class="num">4 в 1</div><div class="lbl">бассейн · мангал · кухня · парковка</div></div>
+  </div>
+</section>
+
+<!-- ЧТО ЕСТЬ -->
+<section class="pad" id="uslugi">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Что входит</span>
+      <h2>Всё для отдыха компанией — на одной площадке</h2>
+      <p>Бронируете целиком: никаких соседей и чужих компаний. Территория весь день только ваша.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/><path d="M7 12V5a2 2 0 0 1 4 0M13 12V6"/></svg></div>
+        <h3>Бассейн</h3>
+        <p>Освежающий бассейн — то, что нужно в жаркий сочинский день.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 10h16M6 10l1-5h10l1 5M7 10v9M17 10v9M4 19h16"/></svg></div>
+        <h3>Мангал</h3>
+        <p>Своя мангальная зона для шашлыка и барбекю на компанию.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 12h16M9 8V5h6v3"/></svg></div>
+        <h3>Летняя кухня</h3>
+        <p>Оборудованная летняя кухня — удобно готовить и накрывать стол.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="11" width="18" height="8" rx="1"/><path d="M7 11l2-5h6l2 5"/><circle cx="8" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/></svg></div>
+        <h3>Парковка</h3>
+        <p>Своя парковка на территории — места хватит всей компании.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Только для вас</h3>
+        <p>Площадка бронируется на одну компанию — без посторонних рядом.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 20 12 16.5 6.5 20 8 13.5 3 9l6.5-.5z"/></svg></div>
+        <h3>Для любого повода</h3>
+        <p>Дни рождения, встречи друзей, семейные праздники и корпоративы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ТАРИФЫ -->
+<section class="rooms pad" id="tarify">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Прайс на май</span>
+      <h2>Тарифы аренды площадки</h2>
+      <p>Площадка бронируется на одну компанию с 11:00 до 21:00. Стоимость — за всю территорию целиком.</p>
+    </div>
+    <div class="room-grid">
+
+      <article class="room reveal">
+        <div class="room-media">
+          <span class="badge">до 10 гостей</span>
+          <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/></svg><span>Фото зоны отдыха</span></div>
+        </div>
+        <div class="room-body">
+          <h3>Компания до 10</h3>
+          <p class="room-cap">Для небольшой компании и семьи</p>
+          <ul class="room-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Вся площадка на день, 11:00–21:00</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Бассейн, мангал, летняя кухня</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Парковка на территории</li>
+          </ul>
+          <div class="room-foot">
+            <div class="price"><small>за всю площадку</small><b>10 000 ₽</b></div>
+            <a href="#book" class="btn btn--dark">Забронировать</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room featured reveal">
+        <div class="room-media">
+          <span class="badge">до 15 гостей</span>
+          <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/></svg><span>Фото площадки</span></div>
+        </div>
+        <div class="room-body">
+          <h3>Компания до 15</h3>
+          <p class="room-cap">Та же цена, что за 10 — больше гостей выгоднее</p>
+          <ul class="room-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Вся площадка на день, 11:00–21:00</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Бассейн, мангал, летняя кухня</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Парковка на территории</li>
+          </ul>
+          <div class="room-foot">
+            <div class="price"><small>за всю площадку</small><b>10 000 ₽</b></div>
+            <a href="#book" class="btn btn--dark">Забронировать</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="room-media">
+          <span class="badge">до 20 гостей</span>
+          <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/></svg><span>Фото большой компании</span></div>
+        </div>
+        <div class="room-body">
+          <h3>Компания до 20</h3>
+          <p class="room-cap">Для большой компании и праздников</p>
+          <ul class="room-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Вся площадка на день, 11:00–21:00</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Бассейн, мангал, летняя кухня</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Парковка на территории</li>
+          </ul>
+          <div class="room-foot">
+            <div class="price"><small>за всю площадку</small><b>15 000 ₽</b></div>
+            <a href="#book" class="btn btn--dark">Забронировать</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="price-note">Цены действуют на май. Актуальные даты и стоимость на другие месяцы уточняйте при бронировании.</p>
+  </div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section class="pad" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Атмосфера</span>
+      <h2>Как это выглядит вживую</h2>
+      <p>Замените блоки на свои фото: бассейн, зона отдыха, мангал, летняя кухня, компания за столом.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="cell arch-cell tall"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 15c2-2 4 2 8 0s4-2 8 0M2 19c2-2 4 2 8 0s4-2 8 0"/></svg><span>Бассейн</span></div></div>
+      <div class="cell"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="2"/></svg><span>Зона отдыха</span></div></div>
+      <div class="cell"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 10h16M6 10l1-5h10l1 5"/></svg><span>Мангал</span></div></div>
+      <div class="cell tall"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4" y="8" width="16" height="12" rx="2"/></svg><span>Летняя кухня</span></div></div>
+      <div class="cell"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg><span>Компания за столом</span></div></div>
+      <div class="cell arch-cell"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="2"/></svg><span>Территория</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- КАК ДОБРАТЬСЯ -->
+<section class="route pad" id="route">
+  <div class="wrap route-grid">
+    <div class="reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow">Дорога к нам</span>
+        <h2>Как добраться</h2>
+        <p>Мы в Сочи — совсем рядом с городом, на природе.</p>
+      </div>
+      <div class="route-info">
+        <div class="route-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><h4>Адрес</h4><p>Сочи, Сочинская Барановка, СНТ «Радуга», 150</p></div>
+        </div>
+        <div class="route-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 17h14M6 17l1-6h10l1 6M8 11l1-4h6l1 4"/><circle cx="8" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/></svg></div>
+          <div><h4>На машине</h4><p>[ЗАМЕНИТЕ: сколько минут от центра Сочи, есть ли парковка у въезда]</p></div>
+        </div>
+        <div class="route-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6M8 6h8"/><circle cx="9" cy="16" r="1.5"/></svg></div>
+          <div><h4>Ориентиры</h4><p>[ЗАМЕНИТЕ: заметный поворот, указатель, что рядом]</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="map-box reveal">
+      <!-- КАРТА: на Яндекс.Картах найдите точку → «Поделиться» → «Вставить карту» → вставьте <iframe> вместо блока .ph ниже -->
+      <div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg><span>Здесь будет карта проезда</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Отзывы гостей</span>
+      <h2>Нам доверяют праздники</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Отмечали день рождения компанией — бассейн, шашлык и вся площадка только для нас. Идеально провели день!»</p>
+        <div class="who"><div class="av">А</div><div><b>[Имя гостя]</b><small>день рождения</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Собрались большой семьёй. Дети не вылезали из бассейна, взрослые — у мангала. Летняя кухня очень выручила.»</p>
+        <div class="who"><div class="av">М</div><div><b>[Имя гостя]</b><small>семейный отдых</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Отличное место, чтобы собраться с друзьями в Сочи. Никого лишнего рядом, всё чисто и удобно. Вернёмся!»</p>
+        <div class="who"><div class="av">Д</div><div><b>[Имя гостя]</b><small>встреча с друзьями</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- БРОНИРОВАНИЕ -->
+<section class="book pad" id="book">
+  <div class="wrap book-grid">
+    <div class="reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="eyebrow" style="color:var(--sun-lt)">Бронирование</span>
+        <h2>Забронируйте площадку на Fazenda</h2>
+        <p>Оставьте заявку или напишите напрямую — подскажем свободные даты и забронируем ваш день.</p>
+      </div>
+      <div class="book-contacts">
+        <!-- [ЗАМЕНИТЕ контакты] -->
+        <a href="tel:+70000000000"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg></span>+7 (000) 000-00-00</a>
+        <a href="https://wa.me/70000000000" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.3-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg></span>Написать в WhatsApp</a>
+        <a href="https://t.me/username" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 3L2 10l6 2 2 7 3-4 5 4 4-16z"/></svg></span>Telegram</a>
+        <a href="https://instagram.com/fazen.da_" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></span>@fazen.da_ в Instagram</a>
+      </div>
+    </div>
+
+    <div class="form reveal">
+      <h3>Оставить заявку</h3>
+      <p>Заполните — и кнопка откроет готовое сообщение в WhatsApp.</p>
+      <div class="field"><label>Ваше имя</label><input id="f-name" type="text" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label>Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__"></div>
+      <div class="row">
+        <div class="field"><label>Дата</label><input id="f-date" type="date"></div>
+        <div class="field"><label>Гостей</label>
+          <select id="f-guests"><option value="">Сколько человек</option><option>до 10</option><option>до 15</option><option>до 20</option></select>
+        </div>
+      </div>
+      <button class="btn btn--gold" id="sendBtn">Отправить в WhatsApp</button>
+      <p class="note">Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДВАЛ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a href="#top" class="logo">
+          <svg class="mark" viewBox="0 0 40 28" aria-hidden="true"><circle class="sun" cx="27.5" cy="7.5" r="4.2"/><path class="mtn" d="M1 27 L12 8 L18 17 L23.5 9 L39 27 Z"/></svg>
+          <span class="txt">FAZENDA<small>СОЧИ · АРЕНДА ПЛОЩАДКИ</small></span>
+        </a>
+        <p class="foot-about">Аренда площадки с бассейном, мангалом и летней кухней для вашей компании. Сочи, СНТ «Радуга».</p>
+        <div class="foot-social">
+          <a href="https://instagram.com/fazen.da_" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg></a>
+          <a href="https://wa.me/70000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 21l2.3-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg></a>
+          <a href="https://t.me/username" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 3L2 10l6 2 2 7 3-4 5 4 4-16z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Разделы</h5>
+        <a href="#uslugi">Что есть</a>
+        <a href="#tarify">Тарифы</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#route">Как добраться</a>
+      </div>
+      <div class="foot-col">
+        <h5>Контакты</h5>
+        <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+        <a href="#route">Сочи, СНТ «Радуга», 150</a>
+        <a href="#tarify">Ежедневно, 11:00–21:00</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 База отдыха «Fazenda», Сочи. Все права защищены.</span>
+      <span>[ЗАМЕНИТЕ: ИП / реквизиты]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  const onScroll=()=>hdr.classList.toggle('scrolled',window.scrollY>40);
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  const burger=document.getElementById('burger');
+  const menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+
+  const WHATSAPP_NUMBER='70000000000'; // <-- [ЗАМЕНИТЕ номер WhatsApp без + и пробелов]
+  document.getElementById('sendBtn').addEventListener('click',()=>{
+    const v=id=>document.getElementById(id).value.trim();
+    const name=v('f-name'),phone=v('f-phone'),date=v('f-date'),g=v('f-guests');
+    if(!name||!phone){alert('Пожалуйста, укажите имя и телефон.');return;}
+    let msg=`Здравствуйте! Хочу забронировать площадку на Fazenda.%0A`;
+    msg+=`Имя: ${name}%0AТелефон: ${phone}%0A`;
+    if(date)msg+=`Дата: ${date}%0A`;
+    if(g)msg+=`Гостей: ${g}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,'_blank');
+  });
+</script>
+</body>
+</html>
