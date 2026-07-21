@@ -235,6 +235,11 @@
   .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .form .btn{width:100%;margin-top:8px}
   .form .note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:12px}
+  .consent{display:flex;align-items:flex-start;gap:10px;margin:4px 0 14px;font-size:.8rem;color:var(--muted);line-height:1.5;cursor:pointer;text-align:left}
+  .consent input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--sun);cursor:pointer}
+  .consent a{color:var(--sun-deep);font-weight:600;text-decoration:underline}
+  .foot-bot a{color:rgba(255,255,255,.8);text-decoration:underline}
+  .foot-bot a:hover{color:var(--sun-lt)}
 
   footer{background:var(--ink);color:rgba(255,255,255,.7);padding:64px 0 32px}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
@@ -619,17 +624,17 @@
       <div class="rev reveal">
         <div class="stars">★★★★★</div>
         <p>«Отмечали день рождения компанией — бассейн, шашлык и вся площадка только для нас. Идеально провели день!»</p>
-        <div class="who"><div class="av">А</div><div><b>[Имя гостя]</b><small>день рождения</small></div></div>
+        <div class="who"><div class="av">А</div><div><b>Гость Fazenda</b><small>день рождения</small></div></div>
       </div>
       <div class="rev reveal">
         <div class="stars">★★★★★</div>
         <p>«Собрались большой семьёй. Дети не вылезали из бассейна, взрослые — у мангала. Летняя кухня очень выручила.»</p>
-        <div class="who"><div class="av">М</div><div><b>[Имя гостя]</b><small>семейный отдых</small></div></div>
+        <div class="who"><div class="av">М</div><div><b>Гость Fazenda</b><small>семейный отдых</small></div></div>
       </div>
       <div class="rev reveal">
         <div class="stars">★★★★★</div>
         <p>«Отличное место, чтобы собраться с друзьями в Сочи. Никого лишнего рядом, всё чисто и удобно. Вернёмся!»</p>
-        <div class="who"><div class="av">Д</div><div><b>[Имя гостя]</b><small>встреча с друзьями</small></div></div>
+        <div class="who"><div class="av">Д</div><div><b>Гость Fazenda</b><small>встреча с друзьями</small></div></div>
       </div>
     </div>
   </div>
@@ -641,21 +646,22 @@
     <div class="sec-head center reveal">
       <span class="eyebrow">Свободные дни</span>
       <h2>Календарь бронирования</h2>
-      <p>Выберите свободную дату и время — запись проходит онлайн, а занятые дни закрываются автоматически.</p>
+      <p>Зелёные дни свободны. Нажмите на дату — и мы предложим забронировать этот день.</p>
     </div>
-    <div class="reveal" style="max-width:760px;margin:0 auto">
-      <!-- Онлайн-запись YCLIENTS.
-           ВАЖНО: основная ссылка n2404569.yclients.com может не встраиваться в iframe
-           (YClients иногда запрещает встраивание). Гарантированно работает кнопка ниже.
-           Для встроенной формы возьмите в кабинете: Настройки → Онлайн-запись →
-           «Встроить форму на сайт» и вставьте их <iframe> вместо этого. -->
-      <div style="text-align:center;margin-bottom:22px">
-        <a href="https://n2404569.yclients.com" target="_blank" rel="noopener" class="btn btn--gold" style="font-size:1rem">Открыть онлайн-запись</a>
-        <p style="color:var(--muted);font-size:.88rem;margin-top:12px">Кнопка открывает онлайн-запись YCLIENTS в новом окне. Ниже — та же форма, встроенная в страницу (может не отображаться в предпросмотре — на опубликованном сайте загрузится).</p>
+        <div class="cal reveal">
+      <div class="cal-head">
+        <button class="cal-nav" id="calPrev" aria-label="Предыдущий месяц"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="cal-title" id="calTitle">—</div>
+        <button class="cal-nav" id="calNext" aria-label="Следующий месяц"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
       </div>
-      <iframe src="https://n2404569.yclients.com" title="Онлайн-запись — Fazenda"
-              width="100%" height="840" frameborder="0" loading="lazy"
-              style="border:0;border-radius:22px;display:block;width:100%;min-height:840px;box-shadow:var(--shadow);background:#fff"></iframe>
+      <div class="cal-week"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend">
+        <span><i class="dot free"></i>Свободно</span>
+        <span><i class="dot busy"></i>Занято</span>
+        <span><i class="dot sel"></i>Выбрано</span>
+      </div>
+      <div class="cal-selected" id="calSelected"><p>Нажмите на свободный день в календаре.</p></div>
     </div>
   </div>
 </section>
@@ -689,8 +695,8 @@
           <select id="f-guests"><option value="">Сколько человек</option><option>до 10</option><option>до 15</option><option>до 20</option></select>
         </div>
       </div>
+      <label class="consent"><input type="checkbox" id="f-consent"><span>Я ознакомлен(а) с <a href="privacy.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a> и даю <a href="soglasie.html" target="_blank" rel="noopener">Согласие на обработку персональных данных</a>.</span></label>
       <button class="btn btn--gold" id="sendBtn">Отправить в WhatsApp</button>
-      <p class="note">Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
     </div>
   </div>
 </section>
@@ -723,7 +729,10 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span>© 2026 База отдыха «Fazenda», Сочи. Все права защищены.</span>
+      <span>© 2026 База отдыха «Fazenda», Сочи.</span>
+      <a href="privacy.html" target="_blank" rel="noopener">Политика обработки персональных данных</a>
+      <a href="soglasie.html" target="_blank" rel="noopener">Согласие на обработку ПДн</a>
+      <a href="oferta.html" target="_blank" rel="noopener">Публичная оферта</a>
     </div>
   </div>
 </footer>
@@ -748,6 +757,7 @@
     const v=id=>document.getElementById(id).value.trim();
     const name=v('f-name'),phone=v('f-phone'),date=v('f-date'),g=v('f-guests');
     if(!name||!phone){alert('Пожалуйста, укажите имя и телефон.');return;}
+    if(!document.getElementById('f-consent').checked){alert('Пожалуйста, подтвердите согласие на обработку персональных данных.');return;}
     let msg=`Здравствуйте! Хочу забронировать площадку на Fazenda.%0A`;
     msg+=`Имя: ${name}%0AТелефон: ${phone}%0A`;
     if(date)msg+=`Дата: ${date}%0A`;
