@@ -644,8 +644,15 @@
       <p>Выберите свободную дату и время — запись проходит онлайн, а занятые дни закрываются автоматически.</p>
     </div>
     <div class="reveal" style="max-width:760px;margin:0 auto">
-      <!-- Онлайн-запись YCLIENTS. Если в кабинете есть точный «код для встраивания формы» —
-           можно заменить src ниже на него. Сейчас подключена основная ссылка записи. -->
+      <!-- Онлайн-запись YCLIENTS.
+           ВАЖНО: основная ссылка n2404569.yclients.com может не встраиваться в iframe
+           (YClients иногда запрещает встраивание). Гарантированно работает кнопка ниже.
+           Для встроенной формы возьмите в кабинете: Настройки → Онлайн-запись →
+           «Встроить форму на сайт» и вставьте их <iframe> вместо этого. -->
+      <div style="text-align:center;margin-bottom:22px">
+        <a href="https://n2404569.yclients.com" target="_blank" rel="noopener" class="btn btn--gold" style="font-size:1rem">Открыть онлайн-запись</a>
+        <p style="color:var(--muted);font-size:.88rem;margin-top:12px">Кнопка открывает онлайн-запись YCLIENTS в новом окне. Ниже — та же форма, встроенная в страницу (может не отображаться в предпросмотре — на опубликованном сайте загрузится).</p>
+      </div>
       <iframe src="https://n2404569.yclients.com" title="Онлайн-запись — Fazenda"
               width="100%" height="840" frameborder="0" loading="lazy"
               style="border:0;border-radius:22px;display:block;width:100%;min-height:840px;box-shadow:var(--shadow);background:#fff"></iframe>
@@ -717,7 +724,6 @@
     </div>
     <div class="foot-bot">
       <span>© 2026 База отдыха «Fazenda», Сочи. Все права защищены.</span>
-      <span>[ЗАМЕНИТЕ: ИП / реквизиты]</span>
     </div>
   </div>
 </footer>
